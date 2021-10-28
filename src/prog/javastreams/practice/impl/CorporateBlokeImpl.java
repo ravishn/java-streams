@@ -57,7 +57,7 @@ public class CorporateBlokeImpl implements CorporateBloke {
         CorporateBlokeImpl corporateBloke = new CorporateBlokeImpl();
 
         // Play around with values to give Optional some work to do
-        corporateBloke.setBlokeId("EMP666");
+        corporateBloke.setBlokeId("BLOKE001");
         corporateBloke.setBlokeName("Some Bloke");
         corporateBloke.setBlokeSalary(100000);
         corporateBloke.setBlokeHappy(false);
@@ -71,16 +71,8 @@ public class CorporateBlokeImpl implements CorporateBloke {
         System.out.println("Bloke's name " +Optional.ofNullable(corporateBloke.getBlokeName()).orElse("New Bloke"));
         System.out.println("Bloke's salary " +Optional.of(corporateBloke.getBlokeSalary()).orElseThrow(() -> new BlokeException("Bloke don't be working for free freaks!")));
 
-        if (corporateBloke.getBlokeSalary() < 200000) {
-
-            corporateBloke.setBlokeHappy(false);
-        } else {
-
-            corporateBloke.setBlokeHappy(true);
-        }
-
+        corporateBloke.setBlokeHappy(corporateBloke.getBlokeSalary() >= 200000);
         System.out.println("Is bloke happy? " +Optional.of(corporateBloke.isBlokeHappy()).orElse(false));
-
         if (!corporateBloke.isBlokeHappy()) {
 
             System.out.println("Show bloke the monies freaks!");
